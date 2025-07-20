@@ -12,13 +12,12 @@
   <style>
     @font-face {
       font-family: 'Coolvetica';
-      src: url('fonts/Coolvetica Rg.otf') format('opentype');
+      src: url('fonts/Coolvetica.otf') format('opentype');
     }
 
-
-   :root {
-    --bg-img: url('images/background.jpg');
-   }
+    :root {
+      --bg-img: url('images/background.jpg');
+    }
 
     * {
       margin: 0;
@@ -31,40 +30,37 @@
       height: 100%;
       font-family: system-ui, sans-serif;
       overflow: hidden;
-      
     }
 
     a {
       text-decoration: none;
     }
 
-    /* Main background image layer */
     .background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: var(--bg-img);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  z-index: -1;
-}
-
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: var(--bg-img);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      z-index: -1;
+    }
 
     .site-header {
       font-family: 'Coolvetica', sans-serif;
-      font-size: 40px;
+      font-size: 46px;
       color: white;
       letter-spacing: 3px;
       position: absolute;
-      top: 20px;
+      top: 10px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
       text-shadow: 0 4px 10px rgba(9, 9, 9, 0.241);
-      mix-blend-mode:difference;
+      mix-blend-mode: difference;
     }
 
     .content-wrapper {
@@ -77,8 +73,7 @@
       transition: filter 0.3s ease;
       position: relative;
       z-index: 5;
-      mix-blend-mode:difference;
-    
+      mix-blend-mode: difference;
     }
 
     .content-wrapper.blurred {
@@ -92,13 +87,24 @@
       45%, 90% { opacity: 0; }
     }
 
+    .coming-soon-wrapper {
+      mix-blend-mode: difference;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
     .coming-soon-text {
       font-size: 40px;
       font-family: 'Coolvetica', sans-serif;
       z-index: 5;
       letter-spacing: 2px;
       color: white;
-      animation: glitchTextFlash 3s infinite ease-in-out;
+      animation: glitchTextFlash 2.5s infinite ease-in-out;
+      mix-blend-mode: difference;
     }
 
     .button-container {
@@ -107,14 +113,15 @@
       gap: 16px;
       margin-top: 20px;
       z-index: 10;
+      width: 160px;
     }
 
     .metal-button,
     .back-button {
-      padding: 10px 20px;
+      padding: 8px 18px;
       border: 2px solid white;
       background: transparent;
-      font-size: 14px;
+      font-size: 12px;
       border-radius: 40px;
       font-family: system-ui, sans-serif;
       cursor: pointer;
@@ -148,7 +155,6 @@
       left: 130%;
     }
 
-
     .metal-button.instagram {
       background-image: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
       -webkit-background-clip: text;
@@ -160,14 +166,13 @@
       mix-blend-mode: normal;
     }
 
-     .coming-soon-wrapper{
-        mix-blend-mode: difference;
-        z-index : 5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-     }
+    .about-button-bottom {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
 
     .about-overlay {
       position: absolute;
@@ -182,19 +187,35 @@
       background: rgba(0, 0, 0, 0.2);
     }
 
+    .site-footer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-family: system-ui, sans-serif;
+  color: white;
+  opacity: 0.6;
+  mix-blend-mode: difference;
+  z-index: 10;
+  text-align: center;
+  pointer-events: none;
+}
+
+
     .hidden {
       display: none;
     }
 
     .glass-box {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 20px;
-      width: 90%;
-      max-width: 900px;
-      height: 90%;
-      padding: 20px;
+      width: 80%;
+      max-width: 600px;
+      height: 75%;
+      padding: 30px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -254,15 +275,23 @@
 
   <div class="content-wrapper" id="content-wrapper">
     <div class="coming-soon-wrapper">
-     <div class="coming-soon-text">COMING SOON</div>
+      <div class="coming-soon-text">COMING SOON</div>
     </div>
 
     <div class="button-container">
+      <a href="https://shopify.com" target="_blank" class="metal-button">latest drop</a>
+      <a href="https://instagram.com/orienne.co" target="_blank" class="metal-button instagram">Instagram</a>
+    </div>
+
+    <div class="about-button-bottom">
       <button class="metal-button" onclick="showAbout()">About Us</button>
-      <a href="https://shopify.com" target="_blank" class="metal-button">Store</a>
-      <a href="https://instagram.com/orienne.co" target="_blank" class="metal-button instagram"> Follow us on Instagram</a>
     </div>
   </div>
+
+  <footer class="site-footer">
+  © 2025 Orienne. All rights reserved.
+</footer>
+
 
   <div id="about-overlay" class="about-overlay hidden">
     <div class="glass-box">
