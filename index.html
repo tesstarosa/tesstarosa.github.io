@@ -12,7 +12,7 @@
   <style>
     @font-face {
       font-family: 'Coolvetica';
-      src: url('fonts/Coolvetica.otf') format('opentype');
+      src: url('fonts/Coolvetica Rg.otf') format('opentype');
     }
 
     :root {
@@ -164,14 +164,30 @@
       font-weight: bold;
       color: transparent;
       mix-blend-mode: normal;
+      min-width: 160px;
     }
 
     .about-button-bottom {
       position: absolute;
-      bottom: 30px;
+      bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
+    }
+
+    .site-footer {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-family: system-ui, sans-serif;
+      color: white;
+      opacity: 0.6;
+      mix-blend-mode: difference;
+      z-index: 10;
+      text-align: center;
+      pointer-events: none;
     }
 
     .about-overlay {
@@ -186,22 +202,6 @@
       z-index: 99;
       background: rgba(0, 0, 0, 0.2);
     }
-
-    .site-footer {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  font-family: system-ui, sans-serif;
-  color: white;
-  opacity: 0.6;
-  mix-blend-mode: difference;
-  z-index: 10;
-  text-align: center;
-  pointer-events: none;
-}
-
 
     .hidden {
       display: none;
@@ -238,6 +238,13 @@
       font-size: 12px;
       padding: 6px 16px;
       z-index: 2;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    .back-button span {
+      display: inline;
     }
 
     .about-text {
@@ -265,6 +272,45 @@
       object-fit: cover;
       border-radius: 10px;
     }
+
+    /* Responsive Fixes for Mobile */
+    @media (max-width: 600px) {
+    
+
+      .site-footer {
+        font-size: 9px;
+      }
+
+      .glass-box {
+        padding-top: 60px;
+      }
+
+      .glass-box .about-header {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        margin: 0;
+      }
+
+      .back-button {
+        top: 15px;
+        left: 15px;
+        font-size: 20px;
+        padding: 6px 10px;
+      }
+
+      .back-button::after {
+        content: '←';
+        font-size: 20px;
+        color: white;
+      }
+
+      .back-button span {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -279,7 +325,7 @@
     </div>
 
     <div class="button-container">
-      <a href="https://shopify.com" target="_blank" class="metal-button">latest drop</a>
+      <a href="https://lightroom.adobe.com/shares/bf9c3ce92b894dfd8349be04c0010545" target="_blank" class="metal-button">UPCOMING...</a>
       <a href="https://instagram.com/orienne.co" target="_blank" class="metal-button instagram">Instagram</a>
     </div>
 
@@ -289,13 +335,12 @@
   </div>
 
   <footer class="site-footer">
-  © 2025 Orienne. All rights reserved.
-</footer>
-
+    © 2025 Orienne. All rights reserved.
+  </footer>
 
   <div id="about-overlay" class="about-overlay hidden">
     <div class="glass-box">
-      <button class="back-button" onclick="hideAbout()">Back</button>
+      <button class="back-button" onclick="hideAbout()"><span>Back</span></button>
       <div class="about-header">ORIENNE</div>
       <div class="about-text">
         <div>We are a fashion collective with a soul rooted in elegance.</div>
