@@ -12,7 +12,11 @@
   <style>
     @font-face {
       font-family: 'Coolvetica';
-      src: url('fonts/Coolvetica.otf') format('opentype');
+      src: url('fonts/Coolvetica Rg.otf') format('opentype');
+    }
+
+    :root {
+      --bg-img: url('images/bckgrnd.jpg');
     }
 
     html, body {
@@ -20,7 +24,7 @@
       padding: 0;
       height: 100%;
       font-family: 'Helvetica Neue', system-ui, sans-serif;
-      background: url('images/bckgrnd.jpg') no-repeat center center fixed;
+      background: var(--bg-img) no-repeat center center fixed;
       background-size: cover;
       display: flex;
       flex-direction: column;
@@ -229,10 +233,12 @@
   </style>
 </head>
 
+<link rel="stylesheet" href="style.css" type="text/css">
+
 <body>
   <div class="wrapper">
     <div class="content-box">
-      <a href="index.html" class="back-button">Back</a>
+      <a href="index.html" class="back-button"></a>
       <div class="logo-title">ORIENNE</div>
       <div class="top-nav">
         <button onclick="showWork()">Work</button>
@@ -289,7 +295,6 @@
     }
 
     window.onload = showWork;
-    console.log("Upcoming page loaded.");
   </script>
 </body>
 </html>
