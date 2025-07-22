@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="msapplication-navbutton-color" content="#000000">
+  <title>Orienne - Upcoming Project</title>
+
+  <style>
+    @font-face {
+      font-family: 'Coolvetica';
+      src: url('fonts/Coolvetica.otf') format('opentype');
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Helvetica Neue', system-ui, sans-serif;
+      background: url('images/bckgrnd.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .content-box {
+      width: 90%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 28px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px) saturate(100%);
+      -webkit-backdrop-filter: blur(16px) saturate(100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: white;
+      padding: 4px 10px;
+      font-size: 13px;
+      border-radius: 20px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+    }
+
+    .logo-title {
+      text-align: center;
+      font-family: 'Coolvetica', sans-serif;
+      font-size: 30px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    .top-nav button {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .top-nav button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+
+    .project-layout {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .project-title {
+      font-size: 28px;
+      font-weight: 700;
+      flex: 1 1 45%;
+      color: white;
+    }
+
+    .project-meta {
+      flex: 1 1 50%;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px 20px;
+      font-size: 14px;
+      color: white;
+    }
+
+    .project-description {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-top: 20px;
+      color: white;
+    }
+
+    .collection-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .collection-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .collection-item img {
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+      aspect-ratio: 5 / 4;
+    }
+
+    .collection-caption {
+      margin-top: 8px;
+      font-size: 13px;
+      text-align: center;
+      color: white;
+    }
+
+    .float-box {
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px) saturate(100%);
+      -webkit-backdrop-filter: blur(16px) saturate(100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      margin-top: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 10px;
+      color: white;
+      margin: 15px 0;
+      opacity: 0.7;
+    }
+
+    @media (min-width: 769px) {
+      .collection-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .back-button::before { content: ""; }
+      .back-button::after { content: "Back"; margin-left: 4px; }
+    }
+
+    @media (max-width: 768px) {
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .collection-item img {
+        aspect-ratio: 3 / 4;
+      }
+      .back-button {
+        font-size: 20px;
+        padding: 4px 10px;
+      }
+      .back-button::after { content: ""; }
+      .back-button::before { content: "←"; }
+    }
+
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content-box">
+      <a href="https://orienne.asia" class="back-button"></a>
+      <div class="logo-title">ORIENNE</div>
+      <div class="top-nav">
+        <button onclick="showWork()">Work</button>
+        <button onclick="showCollection()">Collection</button>
+        <button>Contact</button>
+      </div>
+      <div id="dynamic-content"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 ORIENNE. All rights reserved.
+  </div>
+
+  <script>
+    function showWork() {
+      document.getElementById("dynamic-content").innerHTML = `
+        <img src="images/background.jpg" alt="Work Image" class="project-image" />
+        <div class="project-layout">
+          <div class="project-title">Coming soon</div>
+          <div class="project-meta">
+            <div>Category</div><div>soon</div>
+            <div>Services</div><div>error 404</div>
+            <div>Year</div><div>2025</div>
+          </div>
+        </div>
+        <div class="project-description"></div>
+      `;
+    }
+
+    function showCollection() {
+      document.getElementById("dynamic-content").innerHTML = `
+        <div class="float-box">
+          <div class="collection-grid">
+            <div class="collection-item">
+              <img src="images/item1.jpg" alt="Item 1" />
+              <div class="collection-caption">ERROR</div>
+            </div>
+            <div class="collection-item">
+              <img src="images/item2.jpg" alt="Item 2" />
+              <div class="collection-caption">ERROR</div>
+            </div>
+            <div class="collection-item">
+              <img src="images/item3.jpg" alt="Item 3" />
+              <div class="collection-caption">ERROR</div>
+            </div>
+            <div class="collection-item">
+              <img src="images/item4.jpg" alt="Item 4" />
+              <div class="collection-caption">ERROR</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    window.onload = showWork;
+  </script>
+</body>
+</html>
