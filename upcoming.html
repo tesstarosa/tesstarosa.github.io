@@ -200,17 +200,17 @@
     }
 
     @media (min-width: 769px) {
+
       .top-nav {
-        flex-direction: row;
         justify-content: center;
-        flex-wrap: warp;
-        gap: 10px;
+        flex-wrap:nowrap;
+        gap: 12px;
       }
 
       .top-nav button {
-        flex: 1 1 auto;
-        padding: 8px 12px;
-        font-size: 13px;
+        flex: 0 0 auto;
+        padding: 8px 14px;
+        font-size: 15px;
       }
         
       .collection-grid {
@@ -221,7 +221,8 @@
     }
 
     @media (max-width: 768px) {
-      .collection-grid {
+
+       .collection-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .collection-item img {
@@ -231,8 +232,30 @@
         font-size: 20px;
         padding: 4px 10px;
       }
+      
       .back-button::after { content: ""; }
       .back-button::before { content: "←"; }
+
+      .top-nav {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 10px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+        .top-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+      .top-nav button {
+        padding: 8px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+        flex: 0 0 auto;
+      }
     }
 
     * {
@@ -243,10 +266,12 @@
     *::-webkit-scrollbar {
       display: none;
     }
+
+    input, textarea {
+      font-family: inherit;
+    }
   </style>
 </head>
-
-<link rel="stylesheet" href="style.css" type="text/css">
 
 <body>
   <div class="wrapper">
@@ -256,7 +281,7 @@
       <div class="top-nav">
         <button onclick="showWork()">Work</button>
         <button onclick="showCollection()">Collection</button>
-        <button>Contact</button>
+        <button onclick="showContact()">Contact</button>
       </div>
       <div id="dynamic-content"></div>
     </div>
@@ -286,23 +311,34 @@
       document.getElementById("dynamic-content").innerHTML = `
         <div class="float-box">
           <div class="collection-grid">
-            <div class="collection-item">
-              <img src="images/item1.jpg" alt="Item 1" />
-              <div class="collection-caption">ERROR</div>
-            </div>
-            <div class="collection-item">
-              <img src="images/item2.jpg" alt="Item 2" />
-              <div class="collection-caption">ERROR</div>
-            </div>
-            <div class="collection-item">
-              <img src="images/item3.jpg" alt="Item 3" />
-              <div class="collection-caption">ERROR</div>
-            </div>
-            <div class="collection-item">
-              <img src="images/item4.jpg" alt="Item 4" />
-              <div class="collection-caption">ERROR</div>
-            </div>
+            <div class="collection-item"><img src="images/item1.jpg" alt="Item 1" /><div class="collection-caption">ERROR</div></div>
+            <div class="collection-item"><img src="images/item2.jpg" alt="Item 2" /><div class="collection-caption">ERROR</div></div>
+            <div class="collection-item"><img src="images/item3.jpg" alt="Item 3" /><div class="collection-caption">ERROR</div></div>
+            <div class="collection-item"><img src="images/item4.jpg" alt="Item 4" /><div class="collection-caption">ERROR</div></div>
           </div>
+        </div>
+      `;
+    }
+
+    function showContact() {
+      document.getElementById("dynamic-content").innerHTML = `
+        <form onsubmit="submitForm(event)" class="float-box" style="display: flex; flex-direction: column; gap: 16px;">
+          <input type="text" id="name" placeholder="Your Full Name" required style="padding: 10px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.15); color: white; font-size: 14px;" />
+          <input type="email" id="email" placeholder="Your Email" required style="padding: 10px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.15); color: white; font-size: 14px;" />
+          <textarea id="message" placeholder="Your Message" rows="4" required style="padding: 10px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.15); color: white; font-size: 14px; resize: none;"></textarea>
+          <button type="submit" style="padding: 10px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.2); color: white; font-weight: bold; cursor: pointer;">Submit</button>
+        </form>
+      `;
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+
+      document.getElementById("dynamic-content").innerHTML = `
+        <div class="float-box" style="text-align:center; font-size:18px; color:white;">
+          Thank you for your message, <b>${name}</b>! We'll get back to you soon.
         </div>
       `;
     }
